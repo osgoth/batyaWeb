@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Web-interface";
+}
+
+
+<div class="container">
+        <a asp-controller="Home" asp-action="BlockAll" class="btn btn-secondary">ON</a>
+        <a asp-controller="Home" asp-action="UnblockAll" class="btn btn-secondary">OFF</a>
+        <br><br>
+        <a asp-controller="Home" asp-action="IPAddr" class="btn btn-secondary">IP</a>
+</div>
+
+<div class="container">
+    @ViewBag.Message
+</div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/index.js"></script>
