@@ -9,18 +9,20 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Domain</th>
-        <th scope="col">IP</th>
+        <th scope="col">Link</th>
+        <th scope="col">Delete</th>
     </tr>
     @foreach (var m in Model)
     {
         <tr>
             <td scope="row">@m.ID</td>
             <td>@m.Domain</td>
-            <td>@Dns.GetHostAddresses(m.Domain)[0].ToString()</td>
+            <td><a href="https://@m.Domain" class="btn btn-secondary">GO</a></td>
+            <td><a asp-controller="Home" asp-action="DBRM" asp-route-id="@m.ID">Delete</a></td>
         </tr>
     }
 </table>
 <div class="btn-group" style="height:40px;">
     <a asp-controller="Home" asp-action="Unblock" class="btn btn-secondary">ON</a>
     <a asp-controller="Home" asp-action="UnblockAll" class="btn btn-secondary">OFF</a>
-</div>
+</div><br><br>

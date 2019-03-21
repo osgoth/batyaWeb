@@ -88,21 +88,35 @@ namespace batyaNet
 
         public void Unblock (string site)
         {
+
             string ip = Dns.GetHostAddresses (site) [0].ToString ();
 
-            Process proc = new Process ()
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                FileName = "iptables",
-                Arguments = $"-A INPUT -s {ip} -j ACCEPT",
-                RedirectStandardOutput = this.RedirectStandardOutput,
-                UseShellExecute = this.UseShellExecute,
-                CreateNoWindow = this.CreateNoWindow
-                }
+            string[] arr = {
+                "-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+                "-A INPUT -i lo -j ACCEPT",
+                "-A INPUT -p icmp -j ACCEPT",
+                "-A INPUT -s 192.168.1.0/24 - j ACCEPT",
+                $"-A INPUT -s {ip} -j ACCEPT",
+                "-P INPUT DROP",
+                "-P FORWARD DROP"
             };
 
-            proc.Start ();
+            foreach (string str in arr)
+            {
+                Process proc = new Process ()
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                    FileName = "iptables",
+                    Arguments = str,
+                    RedirectStandardOutput = this.RedirectStandardOutput,
+                    UseShellExecute = this.UseShellExecute,
+                    CreateNoWindow = this.CreateNoWindow
+                    }
+                };
+
+                proc.Start ();
+            }
 
         }
 
@@ -206,3 +220,13 @@ namespace batyaNet
 
     }
 }
+
+/*
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -i lo -m comment --comment "Allow loopback connections" -j ACCEPT
+iptables -A INPUT -p icmp -m comment --comment "Allow Ping to work as expected" -j ACCEPT
+iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
+iptables -A INPUT -s 1.1.1.1 -j ACCEPT
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+*/

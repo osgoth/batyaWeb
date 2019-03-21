@@ -55,6 +55,16 @@ namespace batyaWeb.Controllers
             }
         }
 
+        public IActionResult DBRM (int? id)
+        {
+            using (SiteContext db = new SiteContext ())
+            {
+                db.Sites.Remove (db.Sites.ToList ().FirstOrDefault (s => s.ID == id));
+                db.SaveChanges ();
+            }
+            return View ("DataBase", new SiteContext ().Sites.ToList ());
+        }
+
         public IActionResult BlockAll ()
         {
             Handler handler = new Handler ();
