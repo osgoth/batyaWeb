@@ -62,7 +62,7 @@ namespace batyaWeb.Controllers
                 db.Sites.Remove (db.Sites.ToList ().FirstOrDefault (s => s.ID == id));
                 db.SaveChanges ();
             }
-            return View ("DataBase", new SiteContext ().Sites.ToList ());
+            return RedirectToAction ("DataBase");
         }
 
         public IActionResult BlockAll ()
@@ -70,7 +70,7 @@ namespace batyaWeb.Controllers
             Handler handler = new Handler ();
             handler.BlockAll ();
             ViewBag.Message = "Blocked Everything";
-            return View ("Index");
+            return RedirectToAction ("Index");
         }
 
         public IActionResult UnblockAll ()
@@ -78,7 +78,7 @@ namespace batyaWeb.Controllers
             Handler handler = new Handler ();
             handler.UnblockAll ();
             ViewBag.Message = "Unblocked Everything";
-            return View ("Index");
+            return RedirectToAction ("Index");
         }
 
         public IActionResult Unblock ()
@@ -92,7 +92,7 @@ namespace batyaWeb.Controllers
 
             handler.BlockAll ();
 
-            return View ("DataBase", db.Sites.ToList ());
+            return RedirectToAction ("DataBase");
         }
 
         public IActionResult Status ()
@@ -112,6 +112,32 @@ namespace batyaWeb.Controllers
         public IActionResult Preferences ()
         {
             return View ();
+        }
+
+        public IActionResult IpOf ()
+        {
+            return View ();
+        }
+
+        [HttpPost]
+        public IActionResult IpOf (string site)
+        {
+            try
+            {
+                if (site == null)
+                    ViewBag.Message = "Value cannot be null!";
+                else
+                {
+                    ViewBag.ipv4 = Dns.GetHostAddresses (site) [0].ToString ();
+                    ViewBag.ipv6 = Dns.GetHostAddresses (site) [1].ToString ();
+                }
+                return View ();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "Input a valid string!";
+                return View ();
+            }
         }
 
         [ResponseCache (Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

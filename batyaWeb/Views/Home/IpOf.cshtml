@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "IpOf";
+}
+<div class="container-fluid">
+    <table class="table">
+        <thead>
+            <th>IP OF</th>
+            <th>@ViewBag.Message</th>
+        </thead>
+    <form asp-controller="Home" asp-action="IpOf" class="form-group">
+            <tr>
+                <td><input type="text" name="site" class="form-control"></td>
+                <td>ipv4: </td>
+                <td>@ViewBag.ipv4</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" class="form-control btn btn-secondary"></td>
+                <td>ipv6:</td>
+                <td>@ViewBag.ipv6</td>
+            </tr>
+    </form>
+    </table>
+</div>

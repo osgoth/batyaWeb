@@ -153,32 +153,36 @@ namespace batyaNet
 
         public void UnblockAll ()
         {
-
-            Process proc = new Process ()
+            string[] chains = { "INPUT", "FORWARD" };
+            foreach (string ch in chains)
             {
-                StartInfo = new ProcessStartInfo
+                new Process ()
                 {
-                FileName = "iptables",
-                Arguments = $"-F INPUT",
-                RedirectStandardOutput = this.RedirectStandardOutput,
-                UseShellExecute = this.UseShellExecute,
-                CreateNoWindow = this.CreateNoWindow
-                }
-            };
-            proc.Start ();
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "iptables",
+                            Arguments = $"-F {ch}",
+                            RedirectStandardOutput = this.RedirectStandardOutput,
+                            UseShellExecute = this.UseShellExecute,
+                            CreateNoWindow = this.CreateNoWindow
+                    }
+                }.Start ();
+            }
 
-            proc = new Process ()
+            foreach (string ch in chains)
             {
-                StartInfo = new ProcessStartInfo
+                new Process ()
                 {
-                FileName = "iptables",
-                Arguments = $"-P INPUT ACCEPT",
-                RedirectStandardOutput = this.RedirectStandardOutput,
-                UseShellExecute = this.UseShellExecute,
-                CreateNoWindow = this.CreateNoWindow
-                }
-            };
-            proc.Start ();
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "iptables",
+                            Arguments = $"-P {ch} ACCEPT",
+                            RedirectStandardOutput = this.RedirectStandardOutput,
+                            UseShellExecute = this.UseShellExecute,
+                            CreateNoWindow = this.CreateNoWindow
+                    }
+                }.Start ();
+            }
 
         }
 
