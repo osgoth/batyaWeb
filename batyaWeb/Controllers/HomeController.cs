@@ -48,7 +48,7 @@ namespace batyaWeb.Controllers
                 ViewBag.Message = $"Succesfully Added '{site}' [{Dns.GetHostAddresses (site)[0].ToString ()}]";
                 return View ();
             }
-            catch (Exception ex)
+            catch
             {
                 ViewBag.Message = $"An Error Occured!";
                 return View ();
@@ -133,7 +133,7 @@ namespace batyaWeb.Controllers
                 }
                 return View ();
             }
-            catch (Exception ex)
+            catch
             {
                 ViewBag.Message = "Input a valid string!";
                 return View ();

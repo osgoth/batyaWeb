@@ -92,13 +92,10 @@ namespace batyaNet
             string ip = Dns.GetHostAddresses (site) [0].ToString ();
 
             string[] arr = {
-                "-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
-                "-A INPUT -i lo -j ACCEPT",
-                "-A INPUT -p icmp -j ACCEPT",
-                "-A INPUT -s 192.168.1.0/24 - j ACCEPT",
-                $"-A INPUT -s {ip} -j ACCEPT",
+                $"A INPUT -s {site} -j ACCEPT",
+                $"-A OUTPUT -d {site} -j ACCEPT",
                 "-P INPUT DROP",
-                "-P FORWARD DROP"
+                "-P OUTPUT DROP"
             };
 
             foreach (string str in arr)
@@ -153,7 +150,7 @@ namespace batyaNet
 
         public void UnblockAll ()
         {
-            string[] chains = { "INPUT", "FORWARD" };
+            string[] chains = { "INPUT", "FORWARD", "OUTPUT" };
             foreach (string ch in chains)
             {
                 new Process ()
@@ -226,11 +223,10 @@ namespace batyaNet
 }
 
 /*
-iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A INPUT -i lo -m comment --comment "Allow loopback connections" -j ACCEPT
-iptables -A INPUT -p icmp -m comment --comment "Allow Ping to work as expected" -j ACCEPT
-iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
-iptables -A INPUT -s 1.1.1.1 -j ACCEPT
+
+iptables -A INPUT -s google.com -j ACCEPT
+iptables -A OUTPUT -d google.com -j ACCEPT
 iptables -P INPUT DROP
-iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
+
 */
