@@ -11,9 +11,17 @@ namespace batyaWeb.Controllers
 {
     public class HomeController : Controller
     {
+
         public IActionResult Index ()
         {
             return View ();
+        }
+
+        public IActionResult DataBase ()
+        {
+            SiteContext db = new SiteContext ();
+
+            return View (db.Sites.ToList ());
         }
 
         public ActionResult BlockAll ()

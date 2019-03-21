@@ -6,9 +6,9 @@ namespace batyaWeb.Models
     public class SiteContext : DbContext
     {
         public DbSet<Site> Sites { get; set; }
-        public SiteContext (DbContextOptions<SiteContext> options) : base (options)
+        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {
-            Database.EnsureCreated ();
+            optionsBuilder.UseSqlite ("Data Source=SitesDB.db");
         }
     }
 }

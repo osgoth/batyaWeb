@@ -1,0 +1,13 @@
+@using batyaWeb.Models
+@model List<batyaWeb.Models.Site>
+
+<table>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.ID</td>
+            <td>@m.Domain</td>
+            <td>@m.IP</td>
+        </tr>
+    }
+</table>
