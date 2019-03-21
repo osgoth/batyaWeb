@@ -8,7 +8,7 @@ using batyaWeb.Models;
 namespace batyaWeb.Migrations
 {
     [DbContext(typeof(SiteContext))]
-    [Migration("20190321000155_InitialCreate")]
+    [Migration("20190321014822_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,6 @@ namespace batyaWeb.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Domain");
-
-                    b.Property<string>("IP");
 
                     b.HasKey("ID");
 

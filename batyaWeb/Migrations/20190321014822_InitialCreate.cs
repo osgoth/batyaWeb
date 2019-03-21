@@ -12,8 +12,7 @@ namespace batyaWeb.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Domain = table.Column<string>(nullable: true),
-                    IP = table.Column<string>(nullable: true)
+                    Domain = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

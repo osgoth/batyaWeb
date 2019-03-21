@@ -22,22 +22,31 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">batyaWeb</a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                   
-                </div>
+                
             </div>
         </nav>
     </header>
     <div class="container-fluid">
-            <div class="col-sm-1 float-left">
-                <div class="btn-group-vertical">
-                    <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">status</a>
+            <div class="col-sm-1 float-left" >
+                <div class="btn-group-vertical" role="group">
+                    <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">Status</a>
                     <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">wlan</a>
-                    <a asp-controller="Home" asp-action="DataBase" class="btn btn-secondary">database</a>
+
+                        <div class="btn-group" role="group">
+                            <button id="DBDrop" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              DataBase
+                            </button>
+                                <div class="dropdown-menu" aria-labelledby="DBDrop">
+                                  <a class="dropdown-item" asp-controller="Home" asp-action="DataBase">Behold</a>
+                                  <a class="dropdown-item" asp-controller="Home" asp-action="DBAdd">Add</a>
+                                </div>
+                        </div>
+
                     <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">speedtest</a>
                     <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">itl</a>
                 </div>

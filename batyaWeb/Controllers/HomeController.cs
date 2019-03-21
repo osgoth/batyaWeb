@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using batyaNet;
 using batyaWeb.Models;
@@ -24,7 +25,37 @@ namespace batyaWeb.Controllers
             return View (db.Sites.ToList ());
         }
 
-        public ActionResult BlockAll ()
+        public IActionResult DBAdd ()
+        {
+            return View ();
+        }
+
+        [HttpPost]
+        public IActionResult DBAdd (string site)
+        {
+
+            try
+            {
+                using (SiteContext db = new SiteContext ())
+                {
+                    db.Sites.Add (new Site
+                    {
+                        Domain = site.ToString ()
+                    });
+                    db.SaveChanges ();
+                }
+
+                ViewBag.Message = $"Succesfully Added '{site}' [{Dns.GetHostAddresses (site)[0].ToString ()}]";
+                return View ();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = $"An Error Occured!";
+                return View ();
+            }
+        }
+
+        public IActionResult BlockAll ()
         {
             Handler handler = new Handler ();
             handler.BlockAll ();
@@ -32,7 +63,7 @@ namespace batyaWeb.Controllers
             return View ("Index");
         }
 
-        public ActionResult UnblockAll ()
+        public IActionResult UnblockAll ()
         {
             Handler handler = new Handler ();
             handler.UnblockAll ();
@@ -40,21 +71,35 @@ namespace batyaWeb.Controllers
             return View ("Index");
         }
 
-        public ActionResult Status ()
+        public IActionResult Unblock ()
+        {
+            Handler handler = new Handler ();
+            SiteContext db = new SiteContext ();
+            foreach (Site site in db.Sites.ToList ())
+            {
+                handler.Unblock (Dns.GetHostAddresses (site.Domain) [0].ToString ());
+            }
+
+            handler.BlockAll ();
+
+            return View ("DataBase", db.Sites.ToList ());
+        }
+
+        public IActionResult Status ()
         {
             Handler handler = new Handler ();
             ViewBag.Message = handler.GetStatus ();
             return View ();
         }
 
-        public ActionResult IPAddr ()
+        public IActionResult IPAddr ()
         {
             Handler handler = new Handler ();
             ViewBag.Message = handler.GetIP ();
             return View ("Index");
         }
 
-        public ActionResult Preferences ()
+        public IActionResult Preferences ()
         {
             return View ();
         }

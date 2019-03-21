@@ -15,6 +15,7 @@
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/batyaWeb.TagHelpers.output.cache
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/batyaWeb.RazorCoreGenerate.cache
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/Razor/Views/Home/DataBase.g.cshtml.cs
+/home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/Razor/Views/Home/DBAdd.g.cshtml.cs
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/Razor/Views/Home/Status.g.cshtml.cs
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs

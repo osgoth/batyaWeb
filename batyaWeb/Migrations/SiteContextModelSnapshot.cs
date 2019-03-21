@@ -22,8 +22,6 @@ namespace batyaWeb.Migrations
 
                     b.Property<string>("Domain");
 
-                    b.Property<string>("IP");
-
                     b.HasKey("ID");
 
                     b.ToTable("Sites");

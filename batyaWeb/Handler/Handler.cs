@@ -51,122 +51,121 @@ namespace batyaNet
 
             //initialize process  'iptables -A INPUT -s site.site -j DROP'
 
-            string[] chain = { "INPUT", "FORWARD", "OUTPUT" };
-
-            foreach (string ch in chain)
+            Process proc = new Process ()
             {
-                Process proc = new Process ()
+                StartInfo = new ProcessStartInfo
                 {
-                    StartInfo = new ProcessStartInfo
-                    {
-                    FileName = "iptables",
-                    Arguments = $"-A {ch} -s localost -j ACCEPT",
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
-                    }
-                };
-                proc.Start ();
+                FileName = "iptables",
+                Arguments = $"-A INPUT -s localhost -j ACCEPT",
+                RedirectStandardOutput = this.RedirectStandardOutput,
+                UseShellExecute = this.UseShellExecute,
+                CreateNoWindow = this.CreateNoWindow
+                }
+            };
+            proc.Start ();
 
-                proc = new Process ()
+            proc = new Process ()
+            {
+                StartInfo = new ProcessStartInfo
                 {
-                    StartInfo = new ProcessStartInfo
-                    {
-                    FileName = "iptables",
-                    Arguments = $"-A INPUT -s {BlockAddr} -j DROP",
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
-                    }
-                };
+                FileName = "iptables",
+                Arguments = $"-A INPUT -s {BlockAddr} -j DROP",
+                RedirectStandardOutput = this.RedirectStandardOutput,
+                UseShellExecute = this.UseShellExecute,
+                CreateNoWindow = this.CreateNoWindow
+                }
+            };
 
-                //start process
+            //start process
 
-                proc.Start ();
+            proc.Start ();
 
-                //read output of a command
+            //read output of a command
 
-                System.Console.WriteLine (proc.StandardOutput.ReadToEnd ());
+            System.Console.WriteLine (proc.StandardOutput.ReadToEnd ());
 
-            }
         }
 
-        public void Unblock ()
+        public void Unblock (string site)
         {
+            string ip = Dns.GetHostAddresses (site) [0].ToString ();
+
+            Process proc = new Process ()
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                FileName = "iptables",
+                Arguments = $"-A INPUT -s {ip} -j ACCEPT",
+                RedirectStandardOutput = this.RedirectStandardOutput,
+                UseShellExecute = this.UseShellExecute,
+                CreateNoWindow = this.CreateNoWindow
+                }
+            };
+
+            proc.Start ();
 
         }
 
         public void BlockAll ()
         {
-            string[] chain = { "INPUT", "FORWARD", "OUTPUT" };
 
-            foreach (string ch in chain)
+            Process proc = new Process ()
             {
-                Process proc = new Process ()
+                StartInfo = new ProcessStartInfo
                 {
-                    StartInfo = new ProcessStartInfo
-                    {
-                    FileName = "iptables",
-                    Arguments = $"-A {ch} -s localhost -j ACCEPT",
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
-                    }
-                };
-                proc.Start ();
-            }
+                FileName = "iptables",
+                Arguments = $"-A INPUT -s localhost -j ACCEPT",
+                RedirectStandardOutput = this.RedirectStandardOutput,
+                UseShellExecute = this.UseShellExecute,
+                CreateNoWindow = this.CreateNoWindow
+                }
+            };
+            proc.Start ();
 
-            foreach (string ch in chain)
+            proc = new Process ()
             {
-                Process proc = new Process ()
+                StartInfo = new ProcessStartInfo
                 {
-                    StartInfo = new ProcessStartInfo
-                    {
-                    FileName = "iptables",
-                    Arguments = $"-P {ch} DROP",
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
-                    }
-                };
-                proc.Start ();
-            }
+                FileName = "iptables",
+                Arguments = $"-P INPUT DROP",
+                RedirectStandardOutput = this.RedirectStandardOutput,
+                UseShellExecute = this.UseShellExecute,
+                CreateNoWindow = this.CreateNoWindow
+                }
+            };
+            proc.Start ();
+
         }
 
         public void UnblockAll ()
         {
-            string[] chain = { "INPUT", "FORWARD", "OUTPUT" };
 
-            foreach (string ch in chain)
+            Process proc = new Process ()
             {
-                Process proc = new Process ()
+                StartInfo = new ProcessStartInfo
                 {
-                    StartInfo = new ProcessStartInfo
-                    {
-                    FileName = "iptables",
-                    Arguments = $"-F {ch}",
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
-                    }
-                };
-                proc.Start ();
-            }
-            foreach (string ch in chain)
+                FileName = "iptables",
+                Arguments = $"-F INPUT",
+                RedirectStandardOutput = this.RedirectStandardOutput,
+                UseShellExecute = this.UseShellExecute,
+                CreateNoWindow = this.CreateNoWindow
+                }
+            };
+            proc.Start ();
+
+            proc = new Process ()
             {
-                Process proc = new Process ()
+                StartInfo = new ProcessStartInfo
                 {
-                    StartInfo = new ProcessStartInfo
-                    {
-                    FileName = "iptables",
-                    Arguments = $"-P {ch} ACCEPT",
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
-                    }
-                };
-                proc.Start ();
-            }
+                FileName = "iptables",
+                Arguments = $"-P INPUT ACCEPT",
+                RedirectStandardOutput = this.RedirectStandardOutput,
+                UseShellExecute = this.UseShellExecute,
+                CreateNoWindow = this.CreateNoWindow
+                }
+            };
+            proc.Start ();
+
         }
 
         public string GetStatus ()

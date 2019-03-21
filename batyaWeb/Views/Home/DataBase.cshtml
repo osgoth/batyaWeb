@@ -1,13 +1,26 @@
 @using batyaWeb.Models
+@using System.Net
 @model List<batyaWeb.Models.Site>
+@{
+    ViewData["Title"] = "Behold";
+}
 
-<table>
+<table class="table table-striped table-hover">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Domain</th>
+        <th scope="col">IP</th>
+    </tr>
     @foreach (var m in Model)
     {
         <tr>
-            <td>@m.ID</td>
+            <td scope="row">@m.ID</td>
             <td>@m.Domain</td>
-            <td>@m.IP</td>
+            <td>@Dns.GetHostAddresses(m.Domain)[0].ToString()</td>
         </tr>
     }
 </table>
+<div class="btn-group" style="height:40px;">
+    <a asp-controller="Home" asp-action="Unblock" class="btn btn-secondary">ON</a>
+    <a asp-controller="Home" asp-action="UnblockAll" class="btn btn-secondary">OFF</a>
+</div>
