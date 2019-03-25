@@ -70,7 +70,7 @@ namespace batyaWeb.Controllers
             Handler handler = new Handler ();
             handler.BlockAll ();
             ViewBag.Message = "Blocked Everything";
-            return RedirectToAction ("Index");
+            return View ("Index");
         }
 
         public IActionResult UnblockAll ()
@@ -78,7 +78,7 @@ namespace batyaWeb.Controllers
             Handler handler = new Handler ();
             handler.UnblockAll ();
             ViewBag.Message = "Unblocked Everything";
-            return RedirectToAction ("Index");
+            return View ("Index");
         }
 
         public IActionResult Unblock ()
@@ -89,8 +89,6 @@ namespace batyaWeb.Controllers
             {
                 handler.Unblock (Dns.GetHostAddresses (site.Domain) [0].ToString ());
             }
-
-            handler.BlockAll ();
 
             return RedirectToAction ("DataBase");
         }
@@ -105,7 +103,8 @@ namespace batyaWeb.Controllers
         public IActionResult IPAddr ()
         {
             Handler handler = new Handler ();
-            ViewBag.Message = handler.GetIP ();
+            ViewBag.Message = HttpContext.Connection.RemoteIpAddress.MapToIPv4 ().ToString (); //handler.GetIP ();
+
             return View ("Index");
         }
 
