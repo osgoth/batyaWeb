@@ -36,6 +36,8 @@ namespace batyaWeb.Controllers
 
             try
             {
+                ViewBag.Message = $"Succesfully Added '{site}' [{Dns.GetHostAddresses (site)[0].ToString ()}]";
+
                 using (SiteContext db = new SiteContext ())
                 {
                     db.Sites.Add (new Site
@@ -45,7 +47,6 @@ namespace batyaWeb.Controllers
                     db.SaveChanges ();
                 }
 
-                ViewBag.Message = $"Succesfully Added '{site}' [{Dns.GetHostAddresses (site)[0].ToString ()}]";
                 return View ();
             }
             catch

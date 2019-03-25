@@ -35,7 +35,7 @@
             <div class="col-sm-1 float-left" >
                 <div class="btn-group-vertical" role="group">
                     <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">Status</a>
-                    <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">wlan</a>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">wlan</a>
 
                         <div class="btn-group" role="group">
                             <button id="DBDrop" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,12 +48,13 @@
                         </div>
 
                     <a asp-controller="Home" asp-action="IpOf" class="btn btn-secondary">IpOf</a>
-                    <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">itl</a>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">itl</a>
                 </div>
             </div>
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
                 <div class="jumbotron col-sm-8 offset-sm-2 d-flex">
+                    
                         @RenderBody()
                     
                 </div>

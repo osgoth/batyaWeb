@@ -92,10 +92,8 @@ namespace batyaNet
             string ip = Dns.GetHostAddresses (site) [0].ToString ();
 
             string[] arr = {
-                $"A INPUT -s {site} -j ACCEPT",
-                $"-A OUTPUT -d {site} -j ACCEPT",
-                "-P INPUT DROP",
-                "-P OUTPUT DROP"
+                $"-A INPUT -s {ip} -j ACCEPT",
+                "-P INPUT DROP"
             };
 
             foreach (string str in arr)
