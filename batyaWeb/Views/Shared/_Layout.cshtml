@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - batyaWeb</title>
@@ -8,60 +9,150 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <!--Добавлен стиль main-page.css 26.03-->
+    <link rel="stylesheet" href="~/css/main-page.css"/>
+
 </head>
+
+
 <body>
+
     <header>
+
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">batyaWeb</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
+                    
                     <span class="navbar-toggler-icon"></span>
+
                 </button>
                 
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
-            <div class="col-sm-1 float-left" >
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-3" >
+
+                <div class="left-menu-st box-left-menu">
+                    
+                    <div class="button-menu">
+
+                        <a asp-controller="Home" asp-action="Status" class="txt-btn-left-menu">Status</a>
+                    </div>
+
+                    <div class="button-menu">
+
+                        <a asp-controller="Home" asp-action="Status" class="txt-btn-left-menu">wlan</a>
+                    </div>
+
+                    <div class="button-menu">
+
+                        <a asp-controller="Home" asp-action="IpOf" class="txt-btn-left-menu">IpOf</a>
+                    </div>
+
+                    <div class="button-menu">
+
+                        <a asp-controller="Home" asp-action="Status" class="txt-btn-left-menu">itl</a>
+                    </div>
+
+                    
+
+                    <hr>
+
+                    <div class="btns_on-off">
+
+                            <p>ertyui</p>
+                                
+                    </div>
+                </div>
+
+
+                
+
+
+
+
+
+
+                <!--
                 <div class="btn-group-vertical" role="group">
+
                     <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">Status</a>
                     <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">wlan</a>
 
                         <div class="btn-group" role="group">
+
                             <button id="DBDrop" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              DataBase
+                            DataBase
                             </button>
+
                                 <div class="dropdown-menu" aria-labelledby="DBDrop">
-                                  <a class="dropdown-item" asp-controller="Home" asp-action="DataBase">Behold</a>
-                                  <a class="dropdown-item" asp-controller="Home" asp-action="DBAdd">Add</a>
-                                </div>
+
+                                <a class="dropdown-item" asp-controller="Home" asp-action="DataBase">Behold</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="DBAdd">Add</a>
+                                
+                            </div>
                         </div>
 
-                    <a asp-controller="Home" asp-action="IpOf" class="btn btn-secondary">IpOf</a>
-                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">itl</a>
-                </div>
+                        <a asp-controller="Home" asp-action="IpOf" class="btn btn-secondary">IpOf</a>
+                        <a asp-controller="Home" asp-action="Status" class="btn btn-secondary">itl</a>
+                    </div>
+                    -->
             </div>
-       
-        <main role="main" class="pb-3">
-                <div class="jumbotron col-sm-8 offset-sm-2 d-flex">
-                    
+
+            <partial name="_CookieConsentPartial" />
+
+            <!--<main role="main" class="pb-3">-->
+
+                <div class="content-stl col-sm-9 d-flex float-sm-right">
+
                         @RenderBody()
                     
                 </div>
-        </main>
-    </div>
+            <!--
+            </main>
+        -->
 
-    <footer class="border-top footer text-muted">
+        </div>
+    </div>
+    
+
+    <footer class="border-top footer text-muted ">
+
         <div class="container">
+
             &copy; 2019 - batyaWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
 
