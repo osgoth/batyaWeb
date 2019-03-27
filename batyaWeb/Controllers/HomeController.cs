@@ -13,7 +13,7 @@ namespace batyaWeb.Controllers
     public class HomeController : Controller
     {
 
-        public IActionResult Index ()
+        public ViewResult Index ()
         {
             return View ();
         }
@@ -25,7 +25,7 @@ namespace batyaWeb.Controllers
             return View (db.Sites.ToList ());
         }
 
-        public IActionResult DBAdd ()
+        public ViewResult DBAdd ()
         {
             return View ();
         }
@@ -63,6 +63,7 @@ namespace batyaWeb.Controllers
                 db.Sites.Remove (db.Sites.ToList ().FirstOrDefault (s => s.ID == id));
                 db.SaveChanges ();
             }
+
             return RedirectToAction ("DataBase");
         }
 
@@ -104,17 +105,17 @@ namespace batyaWeb.Controllers
         public IActionResult IPAddr ()
         {
             Handler handler = new Handler ();
-            ViewBag.Message = HttpContext.Connection.RemoteIpAddress.MapToIPv4 ().ToString (); //handler.GetIP ();
+            ViewBag.Message = handler.GetIP ();
 
             return View ("Index");
         }
 
-        public IActionResult Preferences ()
+        public ViewResult Preferences ()
         {
             return View ();
         }
 
-        public IActionResult IpOf ()
+        public ViewResult IpOf ()
         {
             return View ();
         }
@@ -143,6 +144,7 @@ namespace batyaWeb.Controllers
         [ResponseCache (Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error ()
         {
+            Domain
             return View (new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

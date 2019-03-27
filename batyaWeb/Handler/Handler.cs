@@ -22,25 +22,6 @@ namespace batyaNet
             this.RedirectStandardOutput = RedirectStandardOutput;
             this.CreateNoWindow = CreateNoWindow;
             this.UseShellExecute = UseShellExecute;
-
-            string[] chain = { "INPUT", "FORWARD", "OUTPUT" };
-
-            foreach (string ch in chain)
-            {
-                Process proc = new Process ()
-                {
-                    StartInfo = new ProcessStartInfo
-                    {
-                    FileName = "iptables",
-                    Arguments = $"-A {ch} -s localost -j ACCEPT",
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
-                    }
-                };
-                proc.Start ();
-            }
-
         }
 
         public void Block (string site)
@@ -51,20 +32,19 @@ namespace batyaNet
 
             //initialize process  'iptables -A INPUT -s site.site -j DROP'
 
-            Process proc = new Process ()
+            new Process ()
             {
                 StartInfo = new ProcessStartInfo
                 {
-                FileName = "iptables",
-                Arguments = $"-A INPUT -s localhost -j ACCEPT",
-                RedirectStandardOutput = this.RedirectStandardOutput,
-                UseShellExecute = this.UseShellExecute,
-                CreateNoWindow = this.CreateNoWindow
+                    FileName = "iptables",
+                        Arguments = $"-A INPUT -s localhost -j ACCEPT",
+                        RedirectStandardOutput = this.RedirectStandardOutput,
+                        UseShellExecute = this.UseShellExecute,
+                        CreateNoWindow = this.CreateNoWindow
                 }
-            };
-            proc.Start ();
+            }.Start ();
 
-            proc = new Process ()
+            Process proc = new Process ()
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -98,19 +78,17 @@ namespace batyaNet
 
             foreach (string str in arr)
             {
-                Process proc = new Process ()
+                new Process ()
                 {
                     StartInfo = new ProcessStartInfo
                     {
-                    FileName = "iptables",
-                    Arguments = str,
-                    RedirectStandardOutput = this.RedirectStandardOutput,
-                    UseShellExecute = this.UseShellExecute,
-                    CreateNoWindow = this.CreateNoWindow
+                        FileName = "iptables",
+                            Arguments = str,
+                            RedirectStandardOutput = this.RedirectStandardOutput,
+                            UseShellExecute = this.UseShellExecute,
+                            CreateNoWindow = this.CreateNoWindow
                     }
-                };
-
-                proc.Start ();
+                }.Start ();
             }
 
         }
@@ -118,31 +96,29 @@ namespace batyaNet
         public void BlockAll ()
         {
 
-            Process proc = new Process ()
+            new Process ()
             {
                 StartInfo = new ProcessStartInfo
                 {
-                FileName = "iptables",
-                Arguments = $"-A INPUT -s localhost -j ACCEPT",
-                RedirectStandardOutput = this.RedirectStandardOutput,
-                UseShellExecute = this.UseShellExecute,
-                CreateNoWindow = this.CreateNoWindow
+                    FileName = "iptables",
+                        Arguments = $"-A INPUT -s localhost -j ACCEPT",
+                        RedirectStandardOutput = this.RedirectStandardOutput,
+                        UseShellExecute = this.UseShellExecute,
+                        CreateNoWindow = this.CreateNoWindow
                 }
-            };
-            proc.Start ();
+            }.Start ();
 
-            proc = new Process ()
+            new Process ()
             {
                 StartInfo = new ProcessStartInfo
                 {
-                FileName = "iptables",
-                Arguments = $"-P INPUT DROP",
-                RedirectStandardOutput = this.RedirectStandardOutput,
-                UseShellExecute = this.UseShellExecute,
-                CreateNoWindow = this.CreateNoWindow
+                    FileName = "iptables",
+                        Arguments = $"-P INPUT DROP",
+                        RedirectStandardOutput = this.RedirectStandardOutput,
+                        UseShellExecute = this.UseShellExecute,
+                        CreateNoWindow = this.CreateNoWindow
                 }
-            };
-            proc.Start ();
+            }.Start ();
 
         }
 
@@ -214,7 +190,9 @@ namespace batyaNet
                 }
             };
             proc.Start ();
-            return proc.StandardOutput.ReadToEnd ();
+
+            return
+            proc.StandardOutput.ReadToEnd ();
         }
 
     }

@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "/home/osgoth/Projects/batyaWeb/batyaWeb/SitesDB.db",
+            "dialect": "SQLite",
+            "name": "SitesDB"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

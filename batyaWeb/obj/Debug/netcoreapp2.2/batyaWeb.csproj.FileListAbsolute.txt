@@ -31,3 +31,4 @@
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/batyaWeb.pdb
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/batyaWeb.csproj.CopyComplete
 /home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/Razor/Views/Home/IpOf.g.cshtml.cs
+/home/osgoth/Projects/batyaWeb/batyaWeb/obj/Debug/netcoreapp2.2/Razor/Views/Home/PBlockAll.g.cshtml.cs
