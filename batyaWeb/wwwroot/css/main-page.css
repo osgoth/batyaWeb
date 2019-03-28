@@ -1,8 +1,15 @@
+.hr-s{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
 .txt-btn-left-menu{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(92, 92, 92);
+    background-color: #212529;
     height: 35px;
     border-radius: 4px 4px 4px 4px;
     color: white;
@@ -13,19 +20,39 @@
     text-decoration: none;
     color: rgb(245, 245, 245);
 }
+.txt-btn-left-menu:active{
+    background-color: white;
+}
 
 .box-left-menu{
     padding-top: 15px;
     padding-bottom: 5px;
     background-color:#212529;
     border-radius: 6px 6px 6px 6px;
+    
+}
+.shadow-boxes{
+    box-shadow:0px 0px 16px 1px rgba(0,0,0,0.46);
+    -webkit-box-shadow:0px 0px 16px 1px rgba(0,0,0,0.46);
+    -moz-box-shadow:0px 0px 16px 1px rgba(0,0,0,0.46);
 }
 
 .button-menu{
     padding-left: 10px;
     padding-right: 10px;
-    height: 45px;
+    height: 35px;
     width: 100%;
+
+}
+.drd-links{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 5px;
+    border-radius: 4px 4px 4px 4px;
+    background-color: #212529;
+    outline: 0px;
+    border: none;
+    color: white;
 }
 .btns_on-off{
     margin-top: 20px;

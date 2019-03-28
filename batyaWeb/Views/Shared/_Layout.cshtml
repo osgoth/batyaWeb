@@ -41,35 +41,57 @@
 
             <div class="col-sm-3" >
 
-                <div class="left-menu-st box-left-menu">
+                <div class="left-menu-st box-left-menu shadow-boxes">
                     
                     <div class="button-menu">
 
                         <a asp-controller="Home" asp-action="Status" class="txt-btn-left-menu">Status</a>
                     </div>
 
+                    <hr color="gray" class="hr-s">
+
                     <div class="button-menu">
 
                         <a asp-controller="Home" asp-action="Status" class="txt-btn-left-menu">wlan</a>
                     </div>
 
+                    <hr color="gray" class="hr-s">
+
+                    <div class="button-menu">
+                    <button id="dropdown-links" class="drd-links"> < Database</button>
+                    </div>
+
+                    <hr color="gray" class="hr-s">
+
+                    <!--Todo dropdown
+                    <div class="button-menu">
+                        <a class="dropdown-item" asp-controller="Home" asp-action="DataBase">Behold</a>
+                    </div>
+
+                    <div class="button-menu">
+                        <a class="dropdown-item" asp-controller="Home" asp-action="DBAdd">Add</a>
+                    </div>
+                    <!---->
                     <div class="button-menu">
 
                         <a asp-controller="Home" asp-action="IpOf" class="txt-btn-left-menu">IpOf</a>
                     </div>
+
+                    <hr color="gray" class="hr-s">
 
                     <div class="button-menu">
 
                         <a asp-controller="Home" asp-action="Status" class="txt-btn-left-menu">itl</a>
                     </div>
 
+                    <hr color="gray" class="hr-s">
                     
 
                     <hr>
 
                     <div class="btns_on-off">
 
-                            <p>ertyui</p>
+                            <p></p>
                                 
                     </div>
                 </div>
@@ -108,11 +130,11 @@
                     -->
             </div>
 
-            <partial name="_CookieConsentPartial" />
+            
 
             <!--<main role="main" class="pb-3">-->
 
-                <div class="content-stl col-sm-9 d-flex float-sm-right">
+                <div class="content-stl col-sm-9 d-flex float-sm-right shadow-boxes">
 
                         @RenderBody()
                     
