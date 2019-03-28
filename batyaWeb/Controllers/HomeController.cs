@@ -67,23 +67,21 @@ namespace batyaWeb.Controllers
             return RedirectToAction ("DataBase");
         }
 
-        public IActionResult BlockAll ()
+        public string BlockAll ()
         {
             Handler handler = new Handler ();
             handler.BlockAll ();
-            ViewBag.Message = "Blocked Everything";
-            return View ("Index");
+            return "Blocked Everything";
         }
 
-        public IActionResult UnblockAll ()
+        public string UnblockAll ()
         {
             Handler handler = new Handler ();
             handler.UnblockAll ();
-            ViewBag.Message = "Unblocked Everything";
-            return View ("Index");
+            return "Unblocked Everything";
         }
 
-        public IActionResult Unblock ()
+        public string Unblock ()
         {
             Handler handler = new Handler ();
             SiteContext db = new SiteContext ();
@@ -92,7 +90,7 @@ namespace batyaWeb.Controllers
                 handler.Unblock (Dns.GetHostAddresses (site.Domain) [0].ToString ());
             }
 
-            return RedirectToAction ("DataBase");
+            return "whitelist-ublocked";
         }
 
         public IActionResult Status ()
@@ -102,12 +100,10 @@ namespace batyaWeb.Controllers
             return View ();
         }
 
-        public IActionResult IPAddr ()
+        public string IPAddr ()
         {
             Handler handler = new Handler ();
-            ViewBag.Message = handler.GetIP ();
-
-            return View ("Index");
+            return handler.GetIP ();
         }
 
         public ViewResult Preferences ()
