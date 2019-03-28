@@ -13,6 +13,8 @@
     <!--Добавлен стиль main-page.css 26.03-->
     <link rel="stylesheet" href="~/css/main-page.css"/>
 
+    
+
 </head>
 
 
@@ -57,21 +59,33 @@
 
                     <hr color="gray" class="hr-s">
 
+                    <!--Выпадающие ссылки-->
                     <div class="button-menu">
-                    <button id="dropdown-links" class="drd-links"> < Database</button>
+
+                            <button id="dropdown-links" class="drd-links"> < Database</button>
+                      
+                    </div>
+                
+                    <div class="menu-ds-none">
+                
+                        <div class="button-menu" style="border-radius: 4px 4px 0px 0px">
+                
+                            <a class="dropd-item" asp-controller="Home" asp-action="DataBase">Behold</a>
+                
+                        </div>
+
+                
+                        <div class="button-menu">
+                
+                            <a class="dropd-item" asp-controller="Home" asp-action="DBAdd">Add</a>
+                
+                        </div>
+                
                     </div>
 
                     <hr color="gray" class="hr-s">
-
-                    <!--Todo dropdown
-                    <div class="button-menu">
-                        <a class="dropdown-item" asp-controller="Home" asp-action="DataBase">Behold</a>
-                    </div>
-
-                    <div class="button-menu">
-                        <a class="dropdown-item" asp-controller="Home" asp-action="DBAdd">Add</a>
-                    </div>
                     <!---->
+
                     <div class="button-menu">
 
                         <a asp-controller="Home" asp-action="IpOf" class="txt-btn-left-menu">IpOf</a>
@@ -160,6 +174,10 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        
+        <!--Добавлен скрипт main-menu.js 28.03-->
+        <script src="~/js/main-menu.js"></script>
+    
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
