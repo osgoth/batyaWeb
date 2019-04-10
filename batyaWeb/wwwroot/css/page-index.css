@@ -1,0 +1,14 @@
+.content-index{
+    align-content: center;
+    width: auto;
+    height: auto;
+    display: block;
+    /* тест */
+    /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+
+}
+/* .width100{
+    width: 100%;
+} */
