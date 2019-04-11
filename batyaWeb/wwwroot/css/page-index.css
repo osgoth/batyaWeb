@@ -1,14 +1,28 @@
 .content-index{
-    align-content: center;
+    /* align-content: center;
     width: auto;
     height: auto;
-    display: block;
+    display: block; */
+    /* width: 100% !important; */
+    /* height: 100% !important; */
     /* тест */
     /* display: flex;
   justify-content: center;
   flex-direction: column; */
+  margin-top: 29px;
+  margin-bottom: 30px;
 
 }
-/* .width100{
-    width: 100%;
-} */
+.buttons_ON_OFF{
+  margin-top: 5px;
+}
+.hotisontalLine{
+  margin-top: 45px;
+  margin-bottom: 30px;
+  background-color: rgb(172, 172, 172);
+  height: 1.2px;
+  width:100%;
+}
+.heidth100{
+    height: auto;
+}

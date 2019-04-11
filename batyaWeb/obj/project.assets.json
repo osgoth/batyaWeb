@@ -12432,23 +12432,23 @@
     ]
   },
   "packageFolders": {
-    "/home/osgoth/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/home/alex/.nuget/packages/": {},
+    "/opt/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/osgoth/Projects/batyaWeb/batyaWeb/batyaWeb.csproj",
+      "projectUniqueName": "/home/alex/www/batyaWeb/batyaWeb/batyaWeb.csproj",
       "projectName": "batyaWeb",
-      "projectPath": "/home/osgoth/Projects/batyaWeb/batyaWeb/batyaWeb.csproj",
-      "packagesPath": "/home/osgoth/.nuget/packages/",
-      "outputPath": "/home/osgoth/Projects/batyaWeb/batyaWeb/obj/",
+      "projectPath": "/home/alex/www/batyaWeb/batyaWeb/batyaWeb.csproj",
+      "packagesPath": "/home/alex/.nuget/packages/",
+      "outputPath": "/home/alex/www/batyaWeb/batyaWeb/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "/opt/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/osgoth/.nuget/NuGet/NuGet.Config"
+        "/home/alex/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"

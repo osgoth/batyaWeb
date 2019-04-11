@@ -3,15 +3,31 @@
 }
 
 <div class="container">
-    <div class="btn btn-secondary" id="on-btn">ON</div>
-    <div class="btn btn-secondary" id="off-btn">OFF</div>
-    <br><br>
-    <div class="btn btn-secondary" id="ip-btn">IP</div>
+    <!-- <div class="row"> -->
+        <div class="d-flex flex-column align-items-center content-index">
+            <!-- Text on/off -->
+            <p class="textAboutON_OFF">Отключение входящих соединений для реализации "White list".</p>
+            
+            <!-- ON|OFF -->
+            <div class="buttons_ON_OFF">
+                <div class="btn btn-secondary" id="on-btn">ON</div>
+                <div class="btn btn-secondary" id="off-btn">OFF</div>
+            </div>
+
+            
+
+            <!-- IP -->
+            <div class="hotisontalLine"></div>
+
+            <p>IP сетевой карты</p>
+            <div class="btn btn-secondary" id="ip-btn">IP</div>
+        </div>
+    <!-- </div> -->
 </div>
 
-<div class="container">
+<!-- <div class="container">
     @ViewBag.Message
-</div>
+</div> -->
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/js/index-btns.js"></script>

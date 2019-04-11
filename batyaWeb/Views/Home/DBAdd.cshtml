@@ -1,11 +1,53 @@
 @{
     ViewData["Title"] = "Add";
 }
-<h1>Add a host to unblock</h1><br>
-<div class="container col-sm-3">
-    <form asp-controller="Home" asp-action="DBAdd" class="form-group">
-        <input type="text" name="site" class="form-control">
-        <input type="submit" value="Submit" class="form-control btn btn-secondary">
-    </form>
-    @ViewBag.Message
+<!-- 
+    TO-DO
+
+    - Заголовок по центру
+    - Ввод на всю длину и кноака SUBMIT справа
+    - отступы
+ -->
+<style type="text/css">
+    .header_dbAdd{
+        margin-top: 18px;
+        text-align: center;
+    }
+    .outMsg-dbAdd{
+        margin-top: 35px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+
+</style>
+<div class="flex-column flex-grow-1" >
+
+    <h1 class="header_dbAdd">Add a host to unblock</h1><br>
+
+    <!-- <div class=""> -->
+
+        <!-- <div class="form-group"> -->
+        
+            <form asp-controller="Home" asp-action="DBAdd" class="form-inline">
+            
+                <div class="col-sm-10">
+
+                    <input type="text" name="site" class="form-control" style="width: 100%;">
+                </div>
+
+                <div class="col-sm-2">
+
+                    <input type="submit" value="Submit" class="btn btn-primary" style="width:100%;">
+                </div>
+           
+            </form>
+        <!-- </div> -->
+
+    <!-- </div> -->
+        <p class="outMsg-dbAdd">
+        @ViewBag.Message
+        </p>
+    
 </div>
+

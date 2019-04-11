@@ -5,24 +5,27 @@
     ViewData["Title"] = "Behold";
 }
 
-<div class="btn-group" style="height:40px;">
-    <a asp-controller="Home" asp-action="Unblock" class="btn btn-secondary">ON</a>
-    <a asp-controller="Home" asp-action="UnblockAll" class="btn btn-secondary">OFF</a>
-</div>
-<table class="table table-striped table-hover">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Domain</th>
-        <th scope="col">Link</th>
-        <th scope="col">Delete</th>
-    </tr>
-    @foreach (var m in Model)
-    {
+ 
+ <div class="d-flex flex-column content-db flex-grow-1">
+    <div class="btn-group btns-on_off-db" style="">
+        <a asp-controller="Home" asp-action="Unblock" class="btn btn-secondary">ON</a>
+        <a asp-controller="Home" asp-action="UnblockAll" class="btn btn-secondary">OFF</a>
+    </div>
+    <table class="table table-striped table-hover">
         <tr>
-            <td scope="row">@m.ID</td>
-            <td>@m.Domain</td>
-            <td><a href="https://@m.Domain" class="btn btn-secondary">GO</a></td>
-            <td><a asp-controller="Home" asp-action="DBRM" asp-route-id="@m.ID">Delete</a></td>
+            <th scope="col">#</th>
+            <th scope="col">Domain</th>
+            <th scope="col">Link</th>
+            <th scope="col">Delete</th>
         </tr>
-    }
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td scope="row">@m.ID</td>
+                <td>@m.Domain</td>
+                <td><a href="https://@m.Domain" class="btn btn-secondary">GO</a></td>
+                <td><a class="btn btn-secondary" asp-controller="Home" asp-action="DBRM" asp-route-id="@m.ID">Delete</a></td>
+            </tr>
+        }
 </table>
+</div>

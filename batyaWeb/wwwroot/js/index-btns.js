@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+// sudo iptables -L
     $('#on-btn').click(function () {
         $.ajax({
             url: '/Home/BlockAll',
