@@ -7,10 +7,17 @@ $(document).ready(function () {
             traditional: true,
             data: {},
             success: function () {
-                alert("blocked everything");
+
+                $('.text-out-on_off').text('Всё заблоктровано!').show();
+
+                $('.text-out-on_off').addClass('alert-success').removeClass('alert-danger alert-primary');
             },
             error: function () {
-                alert("failure");
+
+                $('.text-out-on_off').text('Ошибка!').show();
+
+                // Замена класса для отображения ошибокs
+                $('.text-out-on_off').addClass('alert-danger').removeClass('alert-success');
             }
         });
     });
@@ -22,10 +29,18 @@ $(document).ready(function () {
             traditional: true,
             data: {},
             success: function () {
-                alert("unblocked everything");
+
+                $('.text-out-on_off').text('Разблокировано!').show();
+
+                $('.text-out-on_off').addClass('alert-primary').removeClass('alert-danger alert-success');
+
             },
             error: function () {
-                alert("failure");
+
+                $('.text-out-on_off').text('Ошибка!').show();
+
+                // Замена класса для отображения ошибок
+                $('.text-out-on_off').addClass('alert-danger').removeClass('alert-success');
             }
         });
     });
@@ -37,10 +52,17 @@ $(document).ready(function () {
             traditional: true,
             data: {},
             success: function (data) {
-                alert(data);
+
+                $('.text-out-ip').text(data).show();
+
+                $('.text-out-ip').addClass('alert-success').removeClass('alert-danger');
             },
             error: function () {
-                alert("failure");
+                
+                $('.text-out-ip').text('Ошибка!').show();
+
+                // Замена класса для отображения ошибок
+                $('.text-out-ip').addClass('alert-danger').removeClass('alert-success');
             }
         });
     });

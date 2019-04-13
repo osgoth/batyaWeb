@@ -90,7 +90,7 @@ namespace batyaWeb.Controllers
                 handler.Unblock (Dns.GetHostAddresses (site.Domain) [0].ToString ());
             }
 
-            return "whitelist-ublocked";
+            return "blacklist - active";
         }
 
         public IActionResult Status ()

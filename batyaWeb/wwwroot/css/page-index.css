@@ -26,3 +26,12 @@
 .heidth100{
     height: auto;
 }
+.text-out-on_off{
+  margin-top:40px;
+  display: none;
+}
+
+.text-out-ip{
+  margin-top:40px;
+  display: none;
+}
