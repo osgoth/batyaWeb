@@ -1,5 +1,6 @@
-https://docs.microsoft.com/en-us/ef/core/get-started/netcore/new-db-sqlite<br>
-https://getbootstrap.com/docs/4.0/components/<br>
+a web-interface for banana pi router to turn on/off the internet connection
+
+this is a test version, so it might be laggy.
 
 collaborators:<br>
 <ul>
@@ -10,10 +11,9 @@ collaborators:<br>
 <br><br><br>
 to-do list:
 <ul>
+    <li><s>run server</s></li>
+    <li><s>interact with iptables to manage internet connection</s></li>
     <li>log file</li>
     <li>wlan settings</li>
-    <li>correct markdown</li>
-    <li>add blacklist</li>
-    <li>correct whitelist</li>
-    <li>add features</li>
+    <li><s>add simple blacklist</s></li>
 </ul>
